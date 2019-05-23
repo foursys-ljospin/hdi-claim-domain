@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.ApiErrorResponse;
 import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.InsurancePolicyClaimPayment;
 import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.Order;
 import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.service.InsurancePolicyClaimPaymentService;
@@ -70,7 +71,9 @@ public class InsurancePolicyClaimApiController implements InsurancePolicyClaimAp
 							this.claimOrderService.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, limit, skip);
 					
 					if (orders == null)
-						return new ResponseEntity<String>("Data not found", HttpStatus.NOT_FOUND);
+						return new ResponseEntity<ApiErrorResponse>(
+								new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), 
+										HttpStatus.NOT_FOUND.getReasonPhrase(), "Data not found"), HttpStatus.NOT_FOUND);
 					
 					return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
 				}
@@ -103,8 +106,10 @@ public class InsurancePolicyClaimApiController implements InsurancePolicyClaimAp
 					List<InsurancePolicyClaimPayment> payments = this.claimPaymentService
 							.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, limit, skip);
 
-					if (payments == null)
-						return new ResponseEntity<String>("Data not found", HttpStatus.NOT_FOUND);
+					if (orders == null)
+						return new ResponseEntity<ApiErrorResponse>(
+								new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), 
+										HttpStatus.NOT_FOUND.getReasonPhrase(), "Data not found"), HttpStatus.NOT_FOUND);
 
 					return new ResponseEntity<List<InsurancePolicyClaimPayment>>(payments, HttpStatus.OK);
 				}
