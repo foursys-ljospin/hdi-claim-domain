@@ -106,7 +106,7 @@ public class InsurancePolicyClaimApiController implements InsurancePolicyClaimAp
 					List<InsurancePolicyClaimPayment> payments = this.claimPaymentService
 							.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, limit, skip);
 
-					if (orders == null)
+					if (payments == null)
 						return new ResponseEntity<ApiErrorResponse>(
 								new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), 
 										HttpStatus.NOT_FOUND.getReasonPhrase(), "Data not found"), HttpStatus.NOT_FOUND);
