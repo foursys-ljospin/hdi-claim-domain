@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.InsurancePolicyClaimPayment;
 import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.Order;
 import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.service.InsurancePolicyClaimPaymentService;
+import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.service.InsuranePolicyClaimOrderService;
 import io.swagger.annotations.ApiParam;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-22T14:53:12.701Z")
@@ -35,9 +36,12 @@ public class InsurancePolicyClaimApiController implements InsurancePolicyClaimAp
 	private final ObjectMapper objectMapper;
 
 	private final HttpServletRequest request;
-	
+
 	@Autowired
-	private InsurancePolicyClaimPaymentService service;
+	private InsurancePolicyClaimPaymentService claimPaymentService;
+
+	@Autowired
+	private InsuranePolicyClaimOrderService claimOrderService;
 
 	@org.springframework.beans.factory.annotation.Autowired
 	public InsurancePolicyClaimApiController(ObjectMapper objectMapper, HttpServletRequest request) {
@@ -45,7 +49,7 @@ public class InsurancePolicyClaimApiController implements InsurancePolicyClaimAp
 		this.request = request;
 	}
 
-	public ResponseEntity<List<Order>> getInsuranePolicyClaimOrders(
+	public ResponseEntity<?> getInsuranePolicyClaimOrders(
 			@ApiParam(value = "Company ID", required = true) @RequestHeader(value = "X-Company-Id", required = true) String xCompanyId,
 			@ApiParam(value = "Application ID", required = true) @RequestHeader(value = "X-Application-Id", required = true) String xApplicationId,
 			@ApiParam(value = "User ID", required = true) @RequestHeader(value = "X-User-Id", required = true) String xUserId,
@@ -57,9 +61,19 @@ public class InsurancePolicyClaimApiController implements InsurancePolicyClaimAp
 		String accept = request.getHeader("Accept");
 		if (accept != null && accept.contains("application/json")) {
 			try {
-				return new ResponseEntity<List<Order>>(objectMapper.readValue(
-						"[ {  \"itens\" : [ {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  }, {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  } ],  \"authorizationDate\" : \"2000-01-23\",  \"orderId\" : \"orderId\",  \"sendDate\" : \"2000-01-23\",  \"idPersonMediator\" : 0,  \"receiveDate\" : \"2000-01-23\",  \"orderCode\" : \"orderCode\",  \"creationDate\" : \"2000-01-23\",  \"status\" : {    \"description\" : \"description\",    \"id\" : 5.962133916683182377482808078639209270477294921875  }}, {  \"itens\" : [ {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  }, {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  } ],  \"authorizationDate\" : \"2000-01-23\",  \"orderId\" : \"orderId\",  \"sendDate\" : \"2000-01-23\",  \"idPersonMediator\" : 0,  \"receiveDate\" : \"2000-01-23\",  \"orderCode\" : \"orderCode\",  \"creationDate\" : \"2000-01-23\",  \"status\" : {    \"description\" : \"description\",    \"id\" : 5.962133916683182377482808078639209270477294921875  }} ]",
-						List.class), HttpStatus.OK);
+				if (true)
+					return new ResponseEntity<List<Order>>(objectMapper.readValue(
+							"[ {  \"itens\" : [ {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  }, {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  } ],  \"authorizationDate\" : \"2000-01-23\",  \"orderId\" : \"orderId\",  \"sendDate\" : \"2000-01-23\",  \"idPersonMediator\" : 0,  \"receiveDate\" : \"2000-01-23\",  \"orderCode\" : \"orderCode\",  \"creationDate\" : \"2000-01-23\",  \"status\" : {    \"description\" : \"description\",    \"id\" : 5.962133916683182377482808078639209270477294921875  }}, {  \"itens\" : [ {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  }, {    \"mediatorDiscountPercent\" : 2.027123,    \"idPersonProvider\" : 1,    \"referenceAmount\" : 2.3021358869347655,    \"referenceGrossAmount\" : 7.061401241503109,    \"quantity\" : 5,    \"expectedDeliveryDate\" : \"2000-01-23\",    \"part\" : {      \"code\" : \"code\",      \"name\" : \"name\",      \"id\" : 5.962133916683182377482808078639209270477294921875    },    \"id\" : 6,    \"mediatorAmount\" : 9.301444243932576,    \"deliveryDate\" : \"2000-01-23\",    \"mediatorGrossAmount\" : 3.616076749251911,    \"status\" : {      \"description\" : \"description\",      \"id\" : 5.962133916683182377482808078639209270477294921875    }  } ],  \"authorizationDate\" : \"2000-01-23\",  \"orderId\" : \"orderId\",  \"sendDate\" : \"2000-01-23\",  \"idPersonMediator\" : 0,  \"receiveDate\" : \"2000-01-23\",  \"orderCode\" : \"orderCode\",  \"creationDate\" : \"2000-01-23\",  \"status\" : {    \"description\" : \"description\",    \"id\" : 5.962133916683182377482808078639209270477294921875  }} ]",
+							List.class), HttpStatus.OK);
+				else {
+					List<Order> orders = 
+							this.claimOrderService.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, limit, skip);
+					
+					if (orders == null)
+						return new ResponseEntity<String>("Data not found", HttpStatus.NOT_FOUND);
+					
+					return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
+				}
 			} catch (IOException e) {
 				log.error("Couldn't serialize response for content type application/json", e);
 				return new ResponseEntity<List<Order>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -86,12 +100,12 @@ public class InsurancePolicyClaimApiController implements InsurancePolicyClaimAp
 							"[ {  \"idInsurancePolicy\" : 0,  \"amount\" : 1.4658129,  \"idPerson\" : 5,  \"idClaim\" : 6,  \"dueDate\" : \"2000-01-23\",  \"payDate\" : \"2000-01-23\",  \"status\" : {    \"description\" : \"description\",    \"id\" : 5.962133916683182377482808078639209270477294921875  }}, {  \"idInsurancePolicy\" : 0,  \"amount\" : 1.4658129,  \"idPerson\" : 5,  \"idClaim\" : 6,  \"dueDate\" : \"2000-01-23\",  \"payDate\" : \"2000-01-23\",  \"status\" : {    \"description\" : \"description\",    \"id\" : 5.962133916683182377482808078639209270477294921875  }} ]",
 							List.class), HttpStatus.OK);
 				else {
-					List<InsurancePolicyClaimPayment> payments = 
-							this.service.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, limit, skip);
-					
+					List<InsurancePolicyClaimPayment> payments = this.claimPaymentService
+							.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, limit, skip);
+
 					if (payments == null)
 						return new ResponseEntity<String>("Data not found", HttpStatus.NOT_FOUND);
-					
+
 					return new ResponseEntity<List<InsurancePolicyClaimPayment>>(payments, HttpStatus.OK);
 				}
 			} catch (IOException e) {
