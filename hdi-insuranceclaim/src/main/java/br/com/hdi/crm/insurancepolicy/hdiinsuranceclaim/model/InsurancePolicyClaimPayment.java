@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-22T14:53:12.701Z")
 
-public class InsurancePolicyClaimPayments   {
+public class InsurancePolicyClaimPayment {
   @JsonProperty("idInsurancePolicy")
   private Long idInsurancePolicy = null;
 
@@ -41,7 +41,7 @@ public class InsurancePolicyClaimPayments   {
   @JsonProperty("idPerson")
   private Long idPerson = null;
 
-  public InsurancePolicyClaimPayments idInsurancePolicy(Long idInsurancePolicy) {
+  public InsurancePolicyClaimPayment idInsurancePolicy(Long idInsurancePolicy) {
     this.idInsurancePolicy = idInsurancePolicy;
     return this;
   }
@@ -61,7 +61,7 @@ public class InsurancePolicyClaimPayments   {
     this.idInsurancePolicy = idInsurancePolicy;
   }
 
-  public InsurancePolicyClaimPayments idClaim(Long idClaim) {
+  public InsurancePolicyClaimPayment idClaim(Long idClaim) {
     this.idClaim = idClaim;
     return this;
   }
@@ -81,7 +81,7 @@ public class InsurancePolicyClaimPayments   {
     this.idClaim = idClaim;
   }
 
-  public InsurancePolicyClaimPayments amount(Float amount) {
+  public InsurancePolicyClaimPayment amount(Float amount) {
     this.amount = amount;
     return this;
   }
@@ -101,7 +101,7 @@ public class InsurancePolicyClaimPayments   {
     this.amount = amount;
   }
 
-  public InsurancePolicyClaimPayments dueDate(LocalDate dueDate) {
+  public InsurancePolicyClaimPayment dueDate(LocalDate dueDate) {
     this.dueDate = dueDate;
     return this;
   }
@@ -122,7 +122,7 @@ public class InsurancePolicyClaimPayments   {
     this.dueDate = dueDate;
   }
 
-  public InsurancePolicyClaimPayments payDate(LocalDate payDate) {
+  public InsurancePolicyClaimPayment payDate(LocalDate payDate) {
     this.payDate = payDate;
     return this;
   }
@@ -143,7 +143,7 @@ public class InsurancePolicyClaimPayments   {
     this.payDate = payDate;
   }
 
-  public InsurancePolicyClaimPayments status(Status status) {
+  public InsurancePolicyClaimPayment status(Status status) {
     this.status = status;
     return this;
   }
@@ -164,7 +164,7 @@ public class InsurancePolicyClaimPayments   {
     this.status = status;
   }
 
-  public InsurancePolicyClaimPayments idPerson(Long idPerson) {
+  public InsurancePolicyClaimPayment idPerson(Long idPerson) {
     this.idPerson = idPerson;
     return this;
   }
@@ -193,7 +193,7 @@ public class InsurancePolicyClaimPayments   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InsurancePolicyClaimPayments insurancePolicyClaimPayments = (InsurancePolicyClaimPayments) o;
+    InsurancePolicyClaimPayment insurancePolicyClaimPayments = (InsurancePolicyClaimPayment) o;
     return Objects.equals(this.idInsurancePolicy, insurancePolicyClaimPayments.idInsurancePolicy) &&
         Objects.equals(this.idClaim, insurancePolicyClaimPayments.idClaim) &&
         Objects.equals(this.amount, insurancePolicyClaimPayments.amount) &&
