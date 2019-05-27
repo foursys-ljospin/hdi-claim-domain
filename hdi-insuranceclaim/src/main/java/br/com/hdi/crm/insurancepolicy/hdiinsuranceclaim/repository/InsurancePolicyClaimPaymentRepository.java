@@ -17,14 +17,14 @@ public class InsurancePolicyClaimPaymentRepository {
 	EntityManager entityManager;
 
 	private final String queryPayments =
-					" select a.\"vlr-indeniza\"  as Amount__c, " +
-					" c.\"seq-siniuss\"   as Claim__c, " +
-					" p.\"dat-venciment\" as Programming_Date__c, " +
-					" ec.\"dtpgto\"       as Effective_Payment_Date__c, " +
+					" select a.\"vlr-indeniza\"  as amount, " +
+					" c.\"seq-siniuss\"   as idClaim, " +
+					" p.\"dat-venciment\" as dueDate, " +
+					" ec.\"dtpgto\"       as payDate, " +
 					" case when a.\"sta-estima\" = '0' then 'Pendente' " +
 					" when a.\"sta-estima\" = '1' then 'Autorizado' " +
-					" end as Status__c, " +
-					" a.\"cpfcgc\"        as Account__c " +
+					" end as status, " +
+					" a.\"cpfcgc\"        as cpfcgc " +
 					" from emimr.pub.mrdocum e " +
 					" inner join pub.mrproces d    on d.\"cod-empresa\"  = e.\"cod-empresa\" " +
 					" and d.\"cod-sucursal\" = e.\"cod-sucursal\" " +

@@ -21,13 +21,13 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class InsurancePolicyClaimPayment {
   @JsonProperty("idInsurancePolicy")
-  private Long idInsurancePolicy = null;
+  private String idInsurancePolicy = null;
 
   @JsonProperty("idClaim")
-  private Long idClaim = null;
+  private String idClaim = null;
 
   @JsonProperty("amount")
-  private Float amount = null;
+  private Double amount = null;
 
   @JsonProperty("dueDate")
   private LocalDate dueDate = null;
@@ -36,12 +36,15 @@ public class InsurancePolicyClaimPayment {
   private LocalDate payDate = null;
 
   @JsonProperty("status")
-  private Status status = null;
+  private String status = null;
+
+  @JsonProperty("cpfcgc")
+  private String cpfcgc = null;
 
   @JsonProperty("idPerson")
   private Long idPerson = null;
 
-  public InsurancePolicyClaimPayment idInsurancePolicy(Long idInsurancePolicy) {
+  public InsurancePolicyClaimPayment idInsurancePolicy(String idInsurancePolicy) {
     this.idInsurancePolicy = idInsurancePolicy;
     return this;
   }
@@ -53,15 +56,15 @@ public class InsurancePolicyClaimPayment {
   @ApiModelProperty(value = "Insurancepolicy ID")
 
 
-  public Long getIdInsurancePolicy() {
+  public String getIdInsurancePolicy() {
     return idInsurancePolicy;
   }
 
-  public void setIdInsurancePolicy(Long idInsurancePolicy) {
+  public void setIdInsurancePolicy(String idInsurancePolicy) {
     this.idInsurancePolicy = idInsurancePolicy;
   }
 
-  public InsurancePolicyClaimPayment idClaim(Long idClaim) {
+  public InsurancePolicyClaimPayment idClaim(String idClaim) {
     this.idClaim = idClaim;
     return this;
   }
@@ -73,15 +76,15 @@ public class InsurancePolicyClaimPayment {
   @ApiModelProperty(value = "Claim ID")
 
 
-  public Long getIdClaim() {
+  public String getIdClaim() {
     return idClaim;
   }
 
-  public void setIdClaim(Long idClaim) {
+  public void setIdClaim(String idClaim) {
     this.idClaim = idClaim;
   }
 
-  public InsurancePolicyClaimPayment amount(Float amount) {
+  public InsurancePolicyClaimPayment amount(Double amount) {
     this.amount = amount;
     return this;
   }
@@ -93,11 +96,11 @@ public class InsurancePolicyClaimPayment {
   @ApiModelProperty(value = "Claim value")
 
 
-  public Float getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
-  public void setAmount(Float amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
   }
 
@@ -143,7 +146,7 @@ public class InsurancePolicyClaimPayment {
     this.payDate = payDate;
   }
 
-  public InsurancePolicyClaimPayment status(Status status) {
+  public InsurancePolicyClaimPayment status(String status) {
     this.status = status;
     return this;
   }
@@ -156,12 +159,24 @@ public class InsurancePolicyClaimPayment {
 
   @Valid
 
-  public Status getStatus() {
+  public String getStatus() {
     return status;
   }
 
-  public void setStatus(Status status) {
+  public void setStatus(String status) {
     this.status = status;
+  }
+
+  /**
+   * Get cpfcgc
+   * @return cpfcgc
+   **/
+  public String getCpfcgc() {
+    return cpfcgc;
+  }
+
+  public void setCpfcgc(String cpfcgc) {
+    this.cpfcgc = cpfcgc;
   }
 
   public InsurancePolicyClaimPayment idPerson(Long idPerson) {
