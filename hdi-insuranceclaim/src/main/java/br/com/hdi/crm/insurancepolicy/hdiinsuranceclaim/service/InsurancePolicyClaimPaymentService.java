@@ -1,12 +1,11 @@
 package br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.service;
 
-import java.util.ArrayList;
-
+import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.InsurancePolicyClaimPayment;
+import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.repository.InsurancePolicyClaimPaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.InsurancePolicyClaimPayment;
-import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.repository.InsurancePolicyClaimPaymentRepository;
+import java.util.List;
 
 @Service
 public class InsurancePolicyClaimPaymentService {
@@ -14,10 +13,10 @@ public class InsurancePolicyClaimPaymentService {
 	@Autowired
 	private InsurancePolicyClaimPaymentRepository repository;
 	
-	public ArrayList<InsurancePolicyClaimPayment> findPaymentsByClaimPageable(
-    		Long idInsurancePolicy, Long idClaim, Integer noRecordsPerPage, Integer noStartPage) {
+	public List<InsurancePolicyClaimPayment> findPaymentsByPolicyAndClaimPageable(
+			String seqSinistro, String numChaveDoc, Integer numPage, Integer amountRows) {
 		
-		return this.repository.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, noRecordsPerPage, noStartPage);
+		return this.repository.findPaymentsByPolicyAndClaimPageable(seqSinistro, numChaveDoc, numPage, amountRows);
 	}
 	
 }

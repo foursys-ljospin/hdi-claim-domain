@@ -24,36 +24,37 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-22T14:53:12.701Z")
 
 @Api(value = "insurancepolicy", description = "the insurancepolicy API")
 public interface InsurancePolicyClaimApi {
 
-    @ApiOperation(value = "Purchase order of Claim Parts", nickname = "getInsuranePolicyClaimOrders", notes = "List purchase order of Claim Parts", response = Order.class, responseContainer = "List", tags={ "claim", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful Operation", response = Order.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized", response = ApiErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden", response = ApiErrorResponse.class),
-        @ApiResponse(code = 404, message = "Data not found", response = ApiErrorResponse.class),
-        @ApiResponse(code = 405, message = "Data input not supplied or invalid", response = ApiErrorResponse.class),
-        @ApiResponse(code = 406, message = "Exception", response = ApiErrorResponse.class) })
+    @ApiOperation(value = "Purchase order of Claim Parts", nickname = "getInsuranePolicyClaimOrders", notes = "List purchase order of Claim Parts", response = Order.class, responseContainer = "List", tags = {"claim",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful Operation", response = Order.class, responseContainer = "List"),
+            @ApiResponse(code = 401, message = "Unauthorized", response = ApiErrorResponse.class),
+            @ApiResponse(code = 403, message = "Forbidden", response = ApiErrorResponse.class),
+            @ApiResponse(code = 404, message = "Data not found", response = ApiErrorResponse.class),
+            @ApiResponse(code = 405, message = "Data input not supplied or invalid", response = ApiErrorResponse.class),
+            @ApiResponse(code = 406, message = "Exception", response = ApiErrorResponse.class)})
     @RequestMapping(value = "/insurancepolicy/{idInsurancePolicy}/claim/{idClaim}/orders",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<?> getInsuranePolicyClaimOrders(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId,@ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId,@ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId,@ApiParam(value = "insurancepolicy ID",required=true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy,@ApiParam(value = "Claim ID",required=true) @PathVariable("idClaim") Long idClaim,@Min(0)@ApiParam(value = "Number of start record") @Valid @RequestParam(value = "skip", required = false) Integer skip,@Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue="20") Integer limit,@ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
+            produces = {"application/json"},
+            method = RequestMethod.GET)
+    ResponseEntity<?> getInsuranePolicyClaimOrders(@ApiParam(value = "Company ID", required = true) @RequestHeader(value = "X-Company-Id", required = true) String xCompanyId, @ApiParam(value = "Application ID", required = true) @RequestHeader(value = "X-Application-Id", required = true) String xApplicationId, @ApiParam(value = "User ID", required = true) @RequestHeader(value = "X-User-Id", required = true) String xUserId, @ApiParam(value = "insurancepolicy ID", required = true) @PathVariable("idInsurancePolicy") String idInsurancePolicy, @ApiParam(value = "Claim ID", required = true) @PathVariable("idClaim") String idClaim, @Min(0) @ApiParam(value = "Number of start record") @Valid @RequestParam(value = "skip", required = false) Integer skip, @Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue = "20") Integer limit, @ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
 
 
-    @ApiOperation(value = "Claim payments", nickname = "getInsuranePolicyClaimPayments", notes = "List payments of claim", response = InsurancePolicyClaimPayment.class, responseContainer = "List", tags={ "claim", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful Operation", response = InsurancePolicyClaimPayment.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized", response = ApiErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden", response = ApiErrorResponse.class),
-        @ApiResponse(code = 404, message = "Data not found", response = ApiErrorResponse.class),
-        @ApiResponse(code = 405, message = "Data input not supplied or invalid", response = ApiErrorResponse.class),
-        @ApiResponse(code = 406, message = "Exception", response = ApiErrorResponse.class) })
+    @ApiOperation(value = "Claim payments", nickname = "getInsuranePolicyClaimPayments", notes = "List payments of claim", response = InsurancePolicyClaimPayment.class, responseContainer = "List", tags = {"claim",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successful Operation", response = InsurancePolicyClaimPayment.class, responseContainer = "List"),
+            @ApiResponse(code = 401, message = "Unauthorized", response = ApiErrorResponse.class),
+            @ApiResponse(code = 403, message = "Forbidden", response = ApiErrorResponse.class),
+            @ApiResponse(code = 404, message = "Data not found", response = ApiErrorResponse.class),
+            @ApiResponse(code = 405, message = "Data input not supplied or invalid", response = ApiErrorResponse.class),
+            @ApiResponse(code = 406, message = "Exception", response = ApiErrorResponse.class)})
     @RequestMapping(value = "/insurancepolicy/{idInsurancePolicy}/claim/{idClaim}/payments",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<?> getInsuranePolicyClaimPayments(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId,@ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId,@ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId,@ApiParam(value = "insurancepolicy ID",required=true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy,@ApiParam(value = "Claim ID",required=true) @PathVariable("idClaim") Long idClaim,@Min(0)@ApiParam(value = "Number of start record") @Valid @RequestParam(value = "skip", required = false) Integer skip,@Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue="20") Integer limit,@ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
+            produces = {"application/json"},
+            method = RequestMethod.GET)
+    ResponseEntity<?> getInsuranePolicyClaimPayments(@ApiParam(value = "Company ID", required = true) @RequestHeader(value = "X-Company-Id", required = true) String xCompanyId, @ApiParam(value = "Application ID", required = true) @RequestHeader(value = "X-Application-Id", required = true) String xApplicationId, @ApiParam(value = "User ID", required = true) @RequestHeader(value = "X-User-Id", required = true) String xUserId, @ApiParam(value = "insurancepolicy ID", required = true) @PathVariable("idInsurancePolicy") String idInsurancePolicy, @ApiParam(value = "Claim ID", required = true) @PathVariable("idClaim") String idClaim, @Min(0) @ApiParam(value = "Number of start record") @Valid @RequestParam(value = "skip", required = false) Integer skip, @Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue = "20") Integer limit, @ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
 
 }

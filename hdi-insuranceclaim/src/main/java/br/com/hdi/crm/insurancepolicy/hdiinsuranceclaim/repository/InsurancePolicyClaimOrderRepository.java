@@ -1,21 +1,36 @@
 package br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.repository;
 
+import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.InsurancePolicyClaimPayment;
+import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.Order;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
+@Repository
+@Transactional(readOnly = true)
+public class InsurancePolicyClaimOrderRepository {
 
-import br.com.hdi.crm.insurancepolicy.hdiinsuranceclaim.model.Order;
-
-public interface InsurancePolicyClaimOrderRepository extends Repository<Order, Long> {
+	@PersistenceContext
+	EntityManager entityManager;
 
 	String queryFindOrders = 
 			" select id, name, roll_no from USER_INFO_TEST " +
-			" where rollNo = ?1 ";
-	
-	@Query(value = queryFindOrders, 
-			nativeQuery = true)
-    List<Order> findPaymentsByClaimPageable(
-    		Long idInsurancePolicy, Long idClaim, Integer noRecordsPerPage, Integer noStartPage);
+			" where rollNo = ? ";
+
+	public List<Order> findOrdersByPolicyAndClaimPageable(
+			String seqSinistro, String numChaveDoc, Integer numPage, Integer amountRows) {
+
+		Query query = entityManager.createNativeQuery(queryFindOrders, InsurancePolicyClaimPayment.class);
+		query.setParameter(1, seqSinistro);
+		query.setParameter(2, numChaveDoc);
+		query.setParameter(3, numPage);
+		query.setParameter(4, amountRows);
+
+		return query.getResultList();
+	}
 	
 }

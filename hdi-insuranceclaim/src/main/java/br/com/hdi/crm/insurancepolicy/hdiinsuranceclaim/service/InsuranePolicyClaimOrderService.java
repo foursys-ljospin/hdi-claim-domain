@@ -14,10 +14,10 @@ public class InsuranePolicyClaimOrderService {
 	@Autowired
 	private InsurancePolicyClaimOrderRepository repository;
 	
-	public List<Order> findPaymentsByClaimPageable(
-    		Long idInsurancePolicy, Long idClaim, Integer noRecordsPerPage, Integer noStartPage) {
+	public List<Order> findOrdersByPolicyAndClaimPageable(
+    		String idInsurancePolicy, String idClaim, Integer numPage, Integer amountRows) {
 		
-		return this.repository.findPaymentsByClaimPageable(idInsurancePolicy, idClaim, noRecordsPerPage, noStartPage);
+		return this.repository.findOrdersByPolicyAndClaimPageable(idInsurancePolicy, idClaim, numPage, amountRows);
 	}
 
 }

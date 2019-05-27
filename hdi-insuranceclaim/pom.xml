@@ -69,6 +69,13 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox-version}</version>
         </dependency>
+		<dependency>
+			<groupId>com.hdi.drive-owner.openedge</groupId>
+			<artifactId>openedge</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/drive-owner/openedge.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
